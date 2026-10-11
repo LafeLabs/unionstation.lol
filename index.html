@@ -1,0 +1,79 @@
+ <!doctype html>
+<html>
+<head>
+    <link href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB/3gAA//8AAPb/AAD//wAA//8AAP/7AAD/3wAA3/8AAP7/AAD//wAA//8AAP93AADv/wAA//8AAP//AAB+/gAA" rel="icon" type="image/x-icon">    
+    
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src = "php.js"></script>
+    <title>union station dot lol</title>
+</head>
+<body>
+    <div id ="qrcode"></div>
+    <div id = "image-feed">
+        <IMG SRC="https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/cardboard-sign-union-station-meridian-close.png">
+        <IMG SRC="https://raw.githubusercontent.com/LafeLabs/spore/refs/heads/main/cardboard-sign-union-station-wholefoods.png">
+    </div>
+    <textarea id = "wall"></textarea>
+    
+<style>
+    A{
+        COLOR:BLUE;
+        FONT-SIZE:6EM;
+        FONT-FAMILY:COMIC SANS MS;
+    }
+    body{
+      background-color: #9f8767;    
+    }
+    img{
+        display:block;
+        margin:auto;
+        max-width:50%;
+    }
+    #image-feed img{
+        display:block;
+        margin:auto;
+        border-radius:1em;
+        border:solid;
+        margin-top:2em;
+        margin-bottom:2em;
+    }
+    #wall{
+        FONT-FAMILY:COMIC SANS MS;
+        background-color: #9f8767;    
+        width:80%;
+        display:block;
+        margin:auto;
+        border:solid;
+        height:10em;
+        font-size: clamp(1.2em, 4vw, 3em);
+    }
+</style>
+<script>
+        codesquaresize = 150;
+qrcode = new QRCode(document.getElementById("qrcode"), {
+	text: window.location.href,
+	width: codesquaresize,
+	height: codesquaresize,
+	colorDark : "#000000",
+	colorLight : "#ffffff",
+	correctLevel : QRCode.CorrectLevel.H
+});
+
+
+load_file('wall.txt').then(
+    wall => {
+        document.getElementById("wall").value = wall;
+    }
+);
+
+document.getElementById("wall").onkeyup = function() {
+    
+    wall = this.value;
+    data = encodeURIComponent(this.value);
+    save_file("wall.txt",data);
+    
+}
+
+</script>
+</body>
+</html>
